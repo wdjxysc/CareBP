@@ -1,0 +1,96 @@
+================================================================================================
+
+呵护血压/呵护血糖
+
+number:		第几次    1，2,3,4appTypeId:	
+App类型：       1-呵护血压App，2-呵护血糖App，
+
+http://192.168.110.36:8080/sys/appBlood_terminalGetContent?appTypeId=2&number=4
+
+RESULT_MSG  返回信息
+RESULT_CODE 返回操作码
+RESULT_INFO 返回数据
+	RESULT_FA	返回方案数据
+	RESULT_YF	返回预防数据
+		contentSummary	内容概要
+		thumbnailUrl	图片URL
+		conetentTitle	内容标题
+		typeName	方案类型名称
+{
+    "RESULT_MSG": "操作成功", 
+    "RESULT_CODE": 0, 
+    "RESULT_INFO": {
+        "RESULT_FA": {
+            "typeName": "情志调理",                      //对应  “食疗“
+            "contentSummary": "vvvvvvvvvvvvvvvv",      //对应   ”益处“
+            "thumbnailUrl": "http://192.168.110.36:8088/sys/appBlood_showImage?imageFileName=9312cfeea2bb4fc5aff00e035a1c5e66.png", 
+            "conetentTitle": "vvvvvvvvvvvvvvvvvv"      //对应   “韭菜炒虾仁”
+        }, 
+        "RESULT_YF": {
+            "contentSummary": "zzzzzzzzzzzz",          //对应  “控制食盐”
+            "thumbnailUrl": "http://192.168.110.36:8088/sys/appBlood_showImage?imageFileName=9312cfeea2bb4fc5aff00e035a1c5e66.png", 
+            "conetentTitle": "zzzzzzzzzzzzzzzz"        //对应  “高血压预防”
+        }
+    }
+}
+
+================================================================================================
+
+获取问题列表
+
+appTypeId:	App类型（1-呵护血压App，2-呵护血糖App)
+
+http://192.168.110.36:8088/sys/appBlood_terminalGetQuestion?appTypeId=2
+
+RESULT_MSG  返回信息
+RESULT_CODE 返回操作码
+RESULT_INFO 返回数据
+	questionId		问题Id
+	questionContent		问题内容
+	
+{
+    "RESULT_MSG": "操作成功", 
+    "RESULT_CODE": 0, 
+    "RESULT_INFO": [
+        {
+            "questionId": "4", 
+            "questionContent": "ddddddddd"
+        }, 
+        {
+            "questionId": "5", 
+            "questionContent": "eeeeee"
+        }
+    ]
+}
+
+================================================================================================
+
+获取答案列表
+
+questionId	问题Id
+
+http://192.168.110.36:8088/sys/appBlood_terminalGetAnswer?questionId=2
+
+RESULT_MSG  返回信息
+RESULT_CODE 返回操作码
+RESULT_INFO 返回数据
+	answerContent		答案内容
+	answerTitle		答案标题
+	thumbnailUrl		图片URL
+
+{
+    "RESULT_MSG": "操作成功", 
+    "RESULT_CODE": 0, 
+    "RESULT_INFO": [
+        {
+            "answerContent": "bbbbbbbbbbbb", 
+            "answerTitle": "bbbbbbbbbb", 
+            "thumbnailUrl": "bbb"
+        }, 
+        {
+            "answerContent": "wwwwwwwwwwwwwwwwwwwwwww", 
+            "answerTitle": "wwwwwwwwwwww", 
+            "thumbnailUrl": "wwwwwwwwwwwwwww"
+        }
+    ]
+}
